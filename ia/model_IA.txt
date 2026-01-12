@@ -1,0 +1,5 @@
+model="llama3.1:8b",  # Au lieu de "gemma2:2b"
+
+model="deepseek-coder:6.7b",  # Au lieu de "gemma2:2b"
+
+model="gemma2:2b",
