@@ -1,0 +1,63 @@
+# Python / Django / DRF
+__pycache__/
+*.py[cod]
+*.pyc
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+.env
+*.env
+.env.*
+db.sqlite3
+db.sqlite3-journal
+media/
+staticfiles/
+*.log
+*.pot
+*.mo
+*.swp
+*~
+.DS_Store
+.idea/
+.vscode/
+*.code-workspace
+
+# Secrets et configs sensibles (NE JAMAIS COMMIT)
+config/settings/local.py
+config/settings/production.py   # ou tout settings qui contient SECRET_KEY, DB creds, etc.
+secrets/
+credentials/
+supabase/
+*.key
+*.pem
+*.crt
+
+# Dépendances installées localement
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Tests et coverage
+htmlcov/
+.coverage
+.coverage.*
+coverage.xml
+*.cover
+*.coverage.*
+coverage/
+.tox/
+.nox/
+.pytest_cache/
+.cache/
+.mypy_cache/
+.dmypy.json
+.pytype/
+.ruff_cache/
+
+# Déploiement / Hébergement
+*.dockerignore
+Dockerfile*
+docker-compose*
+Procfile
+runtime.txt
