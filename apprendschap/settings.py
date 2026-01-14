@@ -27,6 +27,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework.authtoken',
     'corsheaders',
+    'drf_spectacular',
 
     # Mes apps
     'utilisateurs',
@@ -142,6 +143,7 @@ REST_FRAMEWORK = {
     ],
     'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend'],
 
+    'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
 }
 
 # CORS
@@ -153,3 +155,13 @@ WAVE_API_KEY = os.getenv('WAVE_API_KEY', 'your_wave_api_key')
 WAVE_BUSINESS_ID = os.getenv('WAVE_BUSINESS_ID', 'your_business_id')
 WAVE_CALLBACK_URL = os.getenv('WAVE_CALLBACK_URL', 'http://192.168.1.7:8000/api/abonnements/wave-callback/')
 WAVE_ENVIRONMENT = os.getenv('WAVE_ENVIRONMENT', 'sandbox')  # sandbox ou production
+
+
+
+# Configuration optionnelle mais très recommandée (mets ton nom de projet) pour swagger
+SPECTACULAR_SETTINGS = {
+    'TITLE': 'Apprendschap API',                  # Change ça
+    'DESCRIPTION': 'API pour l\'application Apprendschap',
+    'VERSION': '1.0.0',
+    'SERVE_INCLUDE_SCHEMA': True,               # Permet d'accéder à /schema/
+}

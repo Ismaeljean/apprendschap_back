@@ -91,9 +91,9 @@ class ParrainageSerializer(serializers.ModelSerializer):
         model = Parrainage
         fields = [
             'id', 'parrain', 'filleul', 'filleul_email', 'filleul_nom',
-            'date_creation', 'bonus_attribue', 'date_bonus_attribue'
+            'date_parrainage', 'bonus_attribue', 'date_bonus_attribue'
         ]
-        read_only_fields = ['parrain', 'date_creation']
+        read_only_fields = ['parrain', 'date_parrainage']
     
     def get_filleul_nom(self, obj):
         if obj.filleul.first_name and obj.filleul.last_name:
