@@ -160,8 +160,16 @@ WAVE_ENVIRONMENT = os.getenv('WAVE_ENVIRONMENT', 'sandbox')  # sandbox ou produc
 
 # Configuration optionnelle mais très recommandée (mets ton nom de projet) pour swagger
 SPECTACULAR_SETTINGS = {
-    'TITLE': 'Apprendschap API',                  # Change ça
+    'TITLE': 'Apprendschap API',
     'DESCRIPTION': 'API pour l\'application Apprendschap',
     'VERSION': '1.0.0',
-    'SERVE_INCLUDE_SCHEMA': True,               # Permet d'accéder à /schema/
+    'SERVE_INCLUDE_SCHEMA': True,
+
+    # === AJOUTE / MODIFIE CES LIGNES POUR SUPPRIMER LES CADENAS ===
+    'SECURITY': [],                             # ← Supprime TOUS les cadenas et le bouton Authorize
+    'SERVE_AUTHENTICATION': [],                 # ← Pas d'auth sur les pages Swagger/Redoc
+    'SERVE_PERMISSIONS': ['rest_framework.permissions.AllowAny'],  # ← Tout le monde voit Swagger
+
+    # Optionnel : enlève les warnings inutiles
+    'DISABLE_ERRORS_AND_WARNINGS': False,       # Garde-les pour debug
 }
