@@ -2673,6 +2673,21 @@ class CreationOfSuperHeros(View):
                 last_name=last_name,
                 role='admin',  # valeur par défaut, tu peux changer
                 is_active=True,
+                
+                # Ajoute ces lignes pour éviter les contraintes NOT NULL ou champs manquants
+                commission_retiree=0,
+                commission_totale_accumulee=0,
+                nombre_abonnements_parraines=0,
+                nombre_filleuls_uniques=0,
+                avatar_choisi='avatar1',  # obligatoire ? default existe, mais au cas où
+                email_verifie=False,
+                niveau=None,  # NULL OK si tu ne veux pas définir un niveau
+                matricule=None,  # NULL OK si tu ne veux pas définir un matricule
+                telephone=None,  # NULL OK si tu ne veux pas définir un numéro de téléphone
+                date_inscription=timezone.now(),  # pour avoir une date réelle
+                last_login=None,  # NULL OK si tu ne veux pas définir la dernière connexion
+                is_staff=True,  # obligatoire pour superuser
+                is_superuser=True,  # obligatoire pour superuser
             )
             return HttpResponse(
                 f"Super-héros créé avec succès !<br>"
