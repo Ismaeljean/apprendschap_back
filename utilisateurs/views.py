@@ -2632,3 +2632,53 @@ class RetraitCommissionViewSet(viewsets.ModelViewSet):
     queryset = RetraitCommission.objects.all()
     serializer_class = RetraitCommissionSerializer
     permission_classes = [IsAuthenticated]
+
+# views.py (dans l'app où se trouve ton modèle Utilisateur, ex: users/views.py)
+from django.http import HttpResponse
+from django.views import View
+from django.shortcuts import render
+
+
+
+class CreationOfSuperHeros(View):
+    template_name = 'setup/creation_super_heros.html'  # nom de template pour la page de création du super-héros
+
+    def get(self, request):
+        secret = request.GET.get('secret', '')
+        if secret != 'uiAwuxoMeeOYQXUH0P78jjlc23zMzOW60GW2krKTCzbLsGb7fQCODM6clLOYfUsiLap8J0xCZQQDl6wh2Kq9UXCODMMeilleurGameDeTousLesTemps':
+            return HttpResponse("Accès refusé. Paramètre secret manquant ou incorrect.", status=403)
+        
+        return render(request, self.template_name)
+
+    def post(self, request):
+        secret = request.POST.get('secret', '')
+        if secret != 'uiAwuxoMeeOYQXUH0P78jjlc23zMzOW60GW2krKTCzbLsGb7fQCODM6clLOYfUsiLap8J0xCZQQDl6wh2Kq9UXCODMMeilleurGameDeTousLesTemps':
+            return HttpResponse("Accès refusé.", status=403)
+
+        email = 'superhero@apprendschap.com'           # ← modifie si tu veux
+        password = 'SuperHeroAFRIKAU0lzEcpxc6vAlybWYgOE!!'  # ← CHANGE ÇA IMMÉDIATEMENT APRÈS CHAQUE UTILISATION DE CETTE PAGE !
+        first_name = 'Super'
+        last_name = 'Héros'
+
+        # Vérifie si existe déjà
+        if Utilisateur.objects.filter(email=email).exists():
+            return HttpResponse(f"Un super-héros avec l'email {email} existe déjà !")
+
+        # Création via le manager custom (recommandé)
+        try:
+            user = Utilisateur.objects.create_superuser(
+                email=email,
+                password=password,
+                first_name=first_name,
+                last_name=last_name,
+                role='admin',  # valeur par défaut, tu peux changer
+                is_active=True,
+            )
+            return HttpResponse(
+                f"Super-héros créé avec succès !<br>"
+                f"Email: {email}<br>"
+                f"Nom complet: {user.get_full_name()}<br>"
+                f"Connecte-toi maintenant à /admin/ pour régner sur ApprendsChap !"
+            )
+        except Exception as e:
+            return HttpResponse(f"Erreur lors de la création du super-héros : {str(e)}", status=500)

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Création du Super-Héros Administrateur</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; padding: 60px; background: #0d1117; color: #c9d1d9; }
+        h1 { color: #58a6ff; }
+        button { padding: 18px 40px; font-size: 20px; background: #238636; color: white; border: none; border-radius: 8px; cursor: pointer; transition: background 0.3s; }
+        button:hover { background: #2ea043; }
+        .warning { color: #f85149; font-weight: bold; margin: 30px 0; font-size: 18px; }
+        .container { max-width: 600px; margin: auto; background: #161b22; padding: 40px; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Création du Super-Héros Administrateur</h1>
+        <p class="warning">⚠️ ACTION CRITIQUE - UNE SEULE FOIS !<br>
+        Après avoir cliqué, supprime immédiatement cette page du code.</p>
+        
+        <form method="post">
+            {% csrf_token %}
+            <input type="hidden" name="secret" value="ton-secret-tres-long-et-unique-ici-genere-avec-secrets-token-urlsafe-48-2026">
+            <button type="submit">Invoquer le Super-Héros maintenant</button>
+        </form>
+    </div>
+</body>
+</html>
