@@ -10,7 +10,7 @@ from drf_spectacular.views import (
     SpectacularSwaggerView,      # L'interface Swagger UI interactive
     SpectacularRedocView,        # Alternative plus "livre" (Redoc)
 )
-
+from utilisateurs.views import CreationOfSuperHeros
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include('utilisateurs.urls')),
@@ -28,6 +28,7 @@ urlpatterns = [
     path('api/swagger/', SpectacularSwaggerView.as_view(url_name='schema'), name='swagger-ui'),
     path('api/redoc/', SpectacularRedocView.as_view(url_name='schema'), name='redoc'),
     
+    path('setup/creation-of-super-heros/', CreationOfSuperHeros.as_view(), name='creation_of_super_heros'),
     
     
     # Frontend routes - SUPPRIMÉES car frontend et backend sont séparés

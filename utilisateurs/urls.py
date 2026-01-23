@@ -13,5 +13,4 @@ router.register('retraits', RetraitCommissionViewSet, basename='retrait')
 
 urlpatterns = [
     path('', include(router.urls)),
-    path('setup/creation-of-super-heros/', CreationOfSuperHeros.as_view(), name='creation_of_super_heros'),
 ]
