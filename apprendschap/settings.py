@@ -83,7 +83,7 @@ WSGI_APPLICATION = 'apprendschap.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db_fresh.sqlite3',
+        'NAME': BASE_DIR / 'db_reset_janvier_2026.sqlite3',
     }
 }
 
